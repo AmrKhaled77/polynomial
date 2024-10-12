@@ -91,28 +91,29 @@ Both implementations have strengths and weaknesses. However, PolynomialWithChatG
 
 
 
-You said:
-the % for all
-ChatGPT said:
-ChatGPT
-Here are the overall scores for each aspect of the comparison between PolynomialWIthGemini and PolynomialWithChatGPT:
+
+
 
 Code Structure & Readability:
 
 PolynomialWIthGemini: 75%
 PolynomialWithChatGPT: 85%
+
 Performance & Efficiency:
 
 PolynomialWIthGemini: 80%
 PolynomialWithChatGPT: 90%
+
 Code Quality & Maintainability:
 
 PolynomialWIthGemini: 70%
 PolynomialWithChatGPT: 85%
+
 Numerical Robustness:
 
 PolynomialWIthGemini: 85%
 PolynomialWithChatGPT: 80%
+
 Overall Scores:
 PolynomialWIthGemini: 77.5%
 PolynomialWithChatGPT: 85%
