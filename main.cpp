@@ -480,14 +480,14 @@ int main() {
     co_derivative=co_constantPoly5.derivative();
     cout << "copilot Test case 25: " << co_derivative << endl;
 
-//    // Test case 26: Root finding for non-root polynomial GPT
-//    double nonRoot = constantPoly5.getRoot();
-//
-//
-//
-//    cout << "Caht_GPT Test case 26: " << nonRoot << endl;
-//    nonRoot = co_constantPoly5.getRoot();
-//    cout << "copilot Test case 26: " << nonRoot << endl;
+    // Test case 26: Root finding for non-root polynomial GPT
+    double nonRoot = constantPoly5.getRoot();
+
+
+
+    cout << "Caht_GPT Test case 26: " << nonRoot << endl;
+    nonRoot = co_constantPoly5.getRoot();
+    cout << "copilot Test case 26: " << nonRoot << endl;
 
     // Test case 27: PolynomialWIthGemini evaluation for a negative x GPT
     value = poly1.evaluate(-2);
