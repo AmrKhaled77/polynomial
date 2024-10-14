@@ -1,4 +1,4 @@
-Detailed Comparison Report of the Two Polynomial Classes
+Detailed Comparison Report of the Two PolynomialWithCopilot Classes
 1. Code Structure & Readability
 PolynomialWIthGemini:
 
