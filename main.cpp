@@ -133,11 +133,147 @@ public:
     }
 };
 
+void printMenu() {
+    cout << "\n=== Polynomial Menu ===\n";
+    cout << "1. Create polynomial\n";
+    cout << "2. Add two polynomials\n";
+    cout << "3. Subtract two polynomials\n";
+    cout << "4. Multiply two polynomials\n";
+    cout << "5. Evaluate polynomial\n";
+    cout << "6. Find root (using Newton's method)\n";
+    cout << "7. Derivative of polynomial\n";
+    cout << "8. Indefinite integral of polynomial\n";
+    cout << "9. Definite integral between two points\n";
+    cout << "0. Exit\n";
+    cout << "Select an option: ";
+}
+
+PolynomialWithChatGPT inputPolynomial() {
+    int degree;
+    cout << "Enter the degree of the polynomial: ";
+    cin >> degree;
+
+    vector<double> coeffs(degree + 1);
+    cout << "Enter the coefficients (from constant term to highest degree term):\n";
+    for (int i = 0; i <= degree; i++) {
+        cout << "Coefficient of x^" << i << ": ";
+        cin >> coeffs[i];
+    }
+
+    return PolynomialWithChatGPT(coeffs);
+}
+
 
 
 
 
 
 int main() {
+    PolynomialWithChatGPT poly1, poly2, result;
+    int choice;
+    bool running = true;
 
+    while (running) {
+        printMenu();
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                // Create polynomial
+                poly1 = inputPolynomial();
+                cout << "Polynomial created: " << poly1 << endl;
+                break;
+            }
+            case 2: {
+                // Add two polynomials
+                cout << "Enter first polynomial:\n";
+                poly1 = inputPolynomial();
+                cout << "Enter second polynomial:\n";
+                poly2 = inputPolynomial();
+                result = poly1 + poly2;
+                cout << "Result of addition: " << result << endl;
+                break;
+            }
+            case 3: {
+                // Subtract two polynomials
+                cout << "Enter first polynomial:\n";
+                poly1 = inputPolynomial();
+                cout << "Enter second polynomial:\n";
+                poly2 = inputPolynomial();
+                result = poly1 - poly2;
+                cout << "Result of subtraction: " << result << endl;
+                break;
+            }
+            case 4: {
+                // Multiply two polynomials
+                cout << "Enter first polynomial:\n";
+                poly1 = inputPolynomial();
+                cout << "Enter second polynomial:\n";
+                poly2 = inputPolynomial();
+                result = poly1 * poly2;
+                cout << "Result of multiplication: " << result << endl;
+                break;
+            }
+            case 5: {
+                // Evaluate polynomial
+                cout << "Enter polynomial:\n";
+                poly1 = inputPolynomial();
+                double x;
+                cout << "Enter value of x: ";
+                cin >> x;
+                cout << "Result of evaluation at x = " << x << ": " << poly1.evaluate(x) << endl;
+                break;
+            }
+            case 6: {
+                // Find root using Newton's method
+                cout << "Enter polynomial:\n";
+                poly1 = inputPolynomial();
+                double guess;
+                cout << "Enter initial guess for the root: ";
+                cin >> guess;
+                double root = poly1.getRoot(guess);
+                cout << "Root found: " << root << endl;
+                break;
+            }
+            case 7: {
+                // Derivative of polynomial
+                cout << "Enter polynomial:\n";
+                poly1 = inputPolynomial();
+                result = poly1.derivative();
+                cout << "Derivative of the polynomial: " << result << endl;
+                break;
+            }
+            case 8: {
+                // Indefinite integral of polynomial
+                cout << "Enter polynomial:\n";
+                poly1 = inputPolynomial();
+                result = poly1.integral();
+                cout << "Indefinite integral of the polynomial: " << result << " + C" << endl;
+                break;
+            }
+            case 9: {
+                // Definite integral between two points
+                cout << "Enter polynomial:\n";
+                poly1 = inputPolynomial();
+                double x1, x2;
+                cout << "Enter lower limit x1: ";
+                cin >> x1;
+                cout << "Enter upper limit x2: ";
+                cin >> x2;
+                double integralResult = poly1.integral(x1, x2);
+                cout << "Definite integral between x1 = " << x1 << " and x2 = " << x2 << ": " << integralResult << endl;
+                break;
+            }
+            case 0: {
+                // Exit
+                running = false;
+                cout << "Exiting program.\n";
+                break;
+            }
+            default:
+                cout << "Invalid option. Please try again.\n";
+        }
+    }
+
+    return 0;
 }
