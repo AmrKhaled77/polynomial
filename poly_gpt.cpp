@@ -155,10 +155,6 @@ double PolynomialWithChatGPT::getCoefficient(int degree) const
         return coeffs[degree];
     return 0;
 }
-#include "poly_gpt.h"
-#include <iostream>
-#include <vector>
-
 // Function to input polynomial coefficients from user
 PolynomialWithChatGPT inputPolynomial() {
     int degree;
