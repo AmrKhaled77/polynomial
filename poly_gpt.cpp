@@ -155,3 +155,104 @@ double PolynomialWithChatGPT::getCoefficient(int degree) const
         return coeffs[degree];
     return 0;
 }
+#include "poly_gpt.h"
+#include <iostream>
+#include <vector>
+
+// Function to input polynomial coefficients from user
+PolynomialWithChatGPT inputPolynomial() {
+    int degree;
+    std::cout << "Enter the degree of the polynomial: ";
+    std::cin >> degree;
+
+    std::vector<double> coeffs(degree + 1);
+    std::cout << "Enter the coefficients (from highest to lowest degree):\n";
+    for (int i = degree; i >= 0; i--) {
+        std::cout << "Coefficient of x^" << i << ": ";
+        std::cin >> coeffs[i];
+    }
+    return PolynomialWithChatGPT(coeffs);
+}
+
+// Function to display the menu
+void displayMenu() {
+    std::cout << "\nPolynomial Operations Menu:\n";
+    std::cout << "1. Add two polynomials\n";
+    std::cout << "2. Subtract two polynomials\n";
+    std::cout << "3. Multiply two polynomials\n";
+    std::cout << "4. Evaluate polynomial at a given value\n";
+    std::cout << "5. Find the derivative of a polynomial\n";
+    std::cout << "6. Find the integral of a polynomial\n";
+    std::cout << "7. Exit\n";
+    std::cout << "Enter your choice: ";
+}
+
+int main() {
+    int choice;
+    do {
+        displayMenu();
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                std::cout << "Enter the first polynomial:\n";
+                PolynomialWithChatGPT p1 = inputPolynomial();
+                std::cout << "Enter the second polynomial:\n";
+                PolynomialWithChatGPT p2 = inputPolynomial();
+                PolynomialWithChatGPT sum = p1 + p2;
+                std::cout << "Result of addition: " << sum << "\n";
+                break;
+            }
+            case 2: {
+                std::cout << "Enter the first polynomial:\n";
+                PolynomialWithChatGPT p1 = inputPolynomial();
+                std::cout << "Enter the second polynomial:\n";
+                PolynomialWithChatGPT p2 = inputPolynomial();
+                PolynomialWithChatGPT diff = p1 - p2;
+                std::cout << "Result of subtraction: " << diff << "\n";
+                break;
+            }
+            case 3: {
+                std::cout << "Enter the first polynomial:\n";
+                PolynomialWithChatGPT p1 = inputPolynomial();
+                std::cout << "Enter the second polynomial:\n";
+                PolynomialWithChatGPT p2 = inputPolynomial();
+                PolynomialWithChatGPT product = p1 * p2;
+                std::cout << "Result of multiplication: " << product << "\n";
+                break;
+            }
+            case 4: {
+                std::cout << "Enter the polynomial:\n";
+                PolynomialWithChatGPT p = inputPolynomial();
+                double x;
+                std::cout << "Enter the value of x: ";
+                std::cin >> x;
+                double result = p.evaluate(x);
+                std::cout << "Result of evaluation at x = " << x << ": " << result << "\n";
+                break;
+            }
+            case 5: {
+                std::cout << "Enter the polynomial:\n";
+                PolynomialWithChatGPT p = inputPolynomial();
+                PolynomialWithChatGPT deriv = p.derivative();
+                std::cout << "Derivative of the polynomial: " << deriv << "\n";
+                break;
+            }
+            case 6: {
+                std::cout << "Enter the polynomial:\n";
+                PolynomialWithChatGPT p = inputPolynomial();
+                PolynomialWithChatGPT integ = p.integral();
+                std::cout << "Integral of the polynomial: " << integ << " + C\n";
+                break;
+            }
+            case 7:
+                std::cout << "Exiting the program.\n";
+                break;
+            default:
+                std::cout << "Invalid choice, please try again.\n";
+        }
+    } while (choice != 7);
+
+    return 0;
+}
+
